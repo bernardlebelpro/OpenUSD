@@ -126,8 +126,12 @@ struct UsdGeomTokensType {
     /// 
     /// UsdGeomCamera
     const TfToken clippingRange;
+    /// \brief "hohoho"
+    ///
+    /// UsdGeomBlundaCamera
+    const TfToken hohoho;
     /// \brief "closed"
-    /// 
+    ///
     /// Possible value for UsdGeomNurbsPatch::GetUFormAttr(), Possible value for UsdGeomNurbsPatch::GetVFormAttr()
     const TfToken closed;
     /// \brief "constant"
@@ -436,7 +440,7 @@ struct UsdGeomTokensType {
     const TfToken origin;
     /// \brief "orthographic"
     /// 
-    /// Possible value for UsdGeomCamera::GetProjectionAttr()
+    /// Possible value for UsdGeomCamera::GetProjectionAttr(), UsdGeomBlundaCamera::GetProjectionAttr()
     const TfToken orthographic;
     /// \brief "partition"
     /// 
@@ -448,7 +452,7 @@ struct UsdGeomTokensType {
     const TfToken periodic;
     /// \brief "perspective"
     /// 
-    /// Fallback value for UsdGeomCamera::GetProjectionAttr()
+    /// Fallback value for UsdGeomCamera::GetProjectionAttr(), UsdGeomBlundaCamera::GetProjectionAttr()
     const TfToken perspective;
     /// \brief "pinned"
     /// 
@@ -484,7 +488,7 @@ struct UsdGeomTokensType {
     const TfToken primvarsDisplayOpacity;
     /// \brief "projection"
     /// 
-    /// UsdGeomCamera
+    /// UsdGeomCamera, UsdGeomBlundaCamera
     const TfToken projection;
     /// \brief "protoIndices"
     /// 

@@ -116,6 +116,7 @@ void wrapUsdGeomTokens()
     _AddToken(cls, "guideVisibility", UsdGeomTokens->guideVisibility);
     _AddToken(cls, "height", UsdGeomTokens->height);
     _AddToken(cls, "hermite", UsdGeomTokens->hermite);
+    _AddToken(cls, "hohoho", UsdGeomTokens->hohoho);
     _AddToken(cls, "holeIndices", UsdGeomTokens->holeIndices);
     _AddToken(cls, "horizontalAperture", UsdGeomTokens->horizontalAperture);
     _AddToken(cls, "horizontalApertureOffset", UsdGeomTokens->horizontalApertureOffset);

@@ -4088,6 +4088,129 @@ class Camera "Camera" (
     )
 }
 
+class BlundaCamera "BlundaCamera" ()
+{
+    float4[] clippingPlanes = [] (
+        doc = """Additional, arbitrarily oriented clipping planes.
+                 A vector (a,b,c,d) encodes a clipping plane that cuts off
+                 (x,y,z) with a * x + b * y + c * z + d * 1 < 0 where (x,y,z)
+                 are the coordinates in the camera's space."""
+    )
+    float2 clippingRange = (1, 1000000) (
+        doc = """Near and far clipping distances in scene units; see 
+                 ."""
+    )
+    float exposure = 0 (
+        doc = """Exposure adjustment, as a log base-2 value.  The default
+                 of 0.0 has no effect.  A value of 1.0 will double the
+                 image-plane intensities in a rendered image; a value of
+                 -1.0 will halve them."""
+    )
+    float focalLength = 50 (
+        doc = """Perspective focal length in tenths of a scene unit; see 
+                 ."""
+    )
+    float focusDistance = 0 (
+        doc = """Distance from the camera to the focus plane in scene units; see 
+                 ."""
+    )
+    float fStop = 0 (
+        doc = "Lens aperture. Defaults to 0.0, which turns off focusing."
+    )
+    float horizontalAperture = 20.955 (
+        doc = """Horizontal aperture in tenths of a scene unit; see 
+                 . Default is the equivalent of 
+                 the standard 35mm spherical projector aperture."""
+    )
+    float horizontalApertureOffset = 0 (
+        doc = """Horizontal aperture offset in the same units as
+                 horizontalAperture. Defaults to 0."""
+    )
+    token projection = "perspective" (
+        allowedTokens = ["perspective", "orthographic"]
+    )
+    rel proxyPrim (
+        doc = '''The proxyPrim relationship allows us to link a
+        prim whose purpose is "render" to its (single target)
+        purpose="proxy" prim.  This is entirely optional, but can be
+        useful in several scenarios:
+        
+        - In a pipeline that does pruning (for complexity management)
+        by deactivating prims composed from asset references, when we
+        deactivate a purpose="render" prim, we will be able to discover
+        and additionally deactivate its associated purpose="proxy" prim,
+        so that preview renders reflect the pruning accurately.
+        
+        - DCC importers may be able to make more aggressive optimizations
+        for interactive processing and display if they can discover the proxy
+        for a given render prim.
+        
+        - With a little more work, a Hydra-based application will be able
+        to map a picked proxy prim back to its render geometry for selection.
+
+        \\note It is only valid to author the proxyPrim relationship on
+        prims whose purpose is "render".'''
+    )
+    uniform token purpose = "default" (
+        allowedTokens = ["default", "render", "proxy", "guide"]
+        doc = """Purpose is a classification of geometry into categories that 
+        can each be independently included or excluded from traversals of prims 
+        on a stage, such as rendering or bounding-box computation traversals.
+
+        See for more detail about how 
+        purpose is computed and used."""
+    )
+    double shutter:close = 0 (
+        doc = """Frame relative shutter close time, analogous comments from
+                 shutter:open apply. A value greater or equal to shutter:open
+                 should be authored, otherwise there is no exposure and a
+                 renderer should produce a black image."""
+    )
+    double shutter:open = 0 (
+        doc = """Frame relative shutter open time in UsdTimeCode units (negative
+                 value indicates that the shutter opens before the current
+                 frame time). Used for motion blur."""
+    )
+    uniform token stereoRole = "mono" (
+        allowedTokens = ["mono", "left", "right"]
+        doc = """If different from mono, the camera is intended to be the left
+                 or right camera of a stereo setup."""
+    )
+    float verticalAperture = 15.2908 (
+        doc = """Vertical aperture in tenths of a scene unit; see 
+                 . Default is the equivalent of 
+                 the standard 35mm spherical projector aperture."""
+    )
+    float verticalApertureOffset = 0 (
+        doc = """Vertical aperture offset in the same units as
+                 verticalAperture. Defaults to 0."""
+    )
+    token visibility = "inherited" (
+        allowedTokens = ["inherited", "invisible"]
+        doc = '''Visibility is meant to be the simplest form of "pruning" 
+        visibility that is supported by most DCC apps.  Visibility is 
+        animatable, allowing a sub-tree of geometry to be present for some 
+        segment of a shot, and absent from others; unlike the action of 
+        deactivating geometry prims, invisible geometry is still 
+        available for inspection, for positioning, for defining volumes, etc.'''
+    )
+    uniform token[] xformOpOrder (
+        doc = """Encodes the sequence of transformation operations in the
+        order in which they should be pushed onto a transform stack while
+        visiting a UsdStage's prims in a graph traversal that will effect
+        the desired positioning for this prim and its descendant prims.
+        
+        You should rarely, if ever, need to manipulate this attribute directly.
+        It is managed by the AddXformOp(), SetResetXformStack(), and
+        SetXformOpOrder(), and consulted by GetOrderedXformOps() and
+        GetLocalTransformation()."""
+    )
+    float hohoho = 2.27 (
+        doc = """Hohoho!; see 
+                 ."""
+    )
+}
+
 class "GeomModelAPI" (
     doc = """UsdGeomModelAPI extends the generic UsdModelAPI schema with
     geometry specific concepts such as cached extents for the entire model,

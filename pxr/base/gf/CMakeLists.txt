@@ -11,6 +11,7 @@ pxr_library(gf
 
     PUBLIC_CLASSES
         bbox3d
+        blundaCamera
         camera
         dualQuatd
         dualQuatf
@@ -87,6 +88,7 @@ pxr_library(gf
     PYMODULE_CPPFILES
         module.cpp
         wrapBBox3d.cpp
+        wrapBlundaCamera.cpp
         wrapCamera.cpp
         wrapDualQuatd.cpp
         wrapDualQuatf.cpp

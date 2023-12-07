@@ -28,6 +28,7 @@ pxr_library(usdGeom
         boundable
         boundableComputeExtent
         camera
+	    blundaCamera
         capsule
         capsule_1
         cone
@@ -74,6 +75,7 @@ pxr_library(usdGeom
         wrapBasisCurves.cpp
         wrapBoundable.cpp
         wrapCamera.cpp
+        wrapBlundaCamera.cpp
         wrapConstraintTarget.cpp
         wrapCapsule.cpp
         wrapCapsule_1.cpp
